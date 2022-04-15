@@ -5,11 +5,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: octokit/request-action@v2.x
+      - uses: JamesIves/fetch-api-data-action@v2.1.0
         id: revieweeRequest
         with:
-          route: "GET https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
-      - run: "echo latest release: ${{steps.revieweeRequest.outputs.data }}"
+          endpoint: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
+          configuration: '{ "method": "GET"}'
+      - run: "echo latest release: ${{steps.revieweeRequest.outputs }}"
 
       - name: Reject build if rejected commits
         if: ${{ steps.revieweeRequest.outputs.response.success == 'true' }}
