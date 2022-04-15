@@ -8,7 +8,7 @@ jobs:
       - uses: JamesIves/fetch-api-data-action@v2.2.2
         id: get_latest_release
         with:
-          endpoint: GET https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits
+          endpoint: https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits
           configuration: '{ "method": "GET" }'
       - run: "echo latest release: ${{ steps.get_latest_release.outputs.response }}"
 
