@@ -5,6 +5,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: octokit/request-action@v2.x
+        id: get_latest_release
+        with:
+          route: GET https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits
+      - run: "echo latest release: ${{ steps.get_latest_release.outputs.response }}"
+
       - name: Check rejected commits
         id: revieweeRequest
         uses: JamesIves/fetch-api-data-action@releases/v1
