@@ -10,7 +10,7 @@ jobs:
         with:
           endpoint: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
           configuration: '{ "method": "GET"}'
-      - run: "echo latest release: ${{steps.revieweeRequest.outputs }}"
+      - run: "echo latest release: ${{steps.revieweeRequest.outputs.response }}"
 
       - name: Reject build if rejected commits
         if: ${{ steps.revieweeRequest.outputs.response.success == 'true' }}
