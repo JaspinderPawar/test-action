@@ -10,10 +10,10 @@ jobs:
         with:
           url: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
           method: "GET"
-      - run: "echo latest release: ${{ toJson(steps.revieweeRequest.outputs.response) }}"
+      - run: "echo latest release: ${{parseJson(steps.revieweeRequest.outputs.response) }}"
 
       - name: Reject build if rejected commits
-        if: ${{ parseJSON(steps.revieweeRequest.outputs.response).success == 'true' }}
+        if: ${{ parseJson(steps.revieweeRequest.outputs.response).success == 'true' }}
         uses: actions/github-script@v3
         with:
           script: |
