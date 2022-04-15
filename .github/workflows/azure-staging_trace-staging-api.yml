@@ -12,5 +12,5 @@ jobs:
           method: "GET"
       - run: "echo latest release: ${{ steps.revieweeRequest.outputs.response }}"
       - name: Reject build if rejected commits
-        if: steps.revieweeRequest.outputs.response == {"success":true,"status":200,"meta":null}
-        run: "echo asd"
+        if: steps.revieweeRequest.outputs.response.status == 200
+        run: "echo latest release"
