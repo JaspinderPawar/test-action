@@ -5,11 +5,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: fjogeleit/http-request-action@v1
+      - uses: octokit/request-action@v2.x
         id: revieweeRequest
         with:
-          url: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
-          method: "GET"
+          route: "GET https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
       - run: "echo latest release: ${{steps.revieweeRequest.outputs.data }}"
 
       - name: Reject build if rejected commits
