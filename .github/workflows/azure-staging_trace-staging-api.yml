@@ -13,5 +13,5 @@ jobs:
       - run: "echo latest release: ${{ steps.revieweeRequest.outputs.response }}"
 
       - name: Reject build if rejected commits
-        if: steps.revieweeRequest.outputs.response.success == true
-      - run: exit 1
+        if: 1 == 1
+        run: "echo ddd release: ${{ steps.revieweeRequest.outputs.response }}"
