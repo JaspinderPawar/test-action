@@ -12,5 +12,5 @@ jobs:
           configuration: '{ "method": "GET" }'
 
       - name: Reject build if rejected commits
-        if: ${{ steps.revieweeRequest.outputs.response.success == 'true' }}
+        if: ${{ steps.revieweeRequest.outputs.response.success == true }}
         run: exit 1
