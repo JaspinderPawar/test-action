@@ -14,4 +14,4 @@ jobs:
 
       - name: Reject build if rejected commits
         if: ${{ steps.revieweeRequest.outputs.response }}=='true'
-        run: "echo ddd release: ${{ steps.revieweeRequest.outputs.response }}"
+        run: exit 1
