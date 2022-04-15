@@ -14,4 +14,4 @@ jobs:
 
       - name: Reject build if rejected commits
         if: steps.revieweeRequest.outputs.response.success == true
-        run: exit 1
+      - run: exit 1
