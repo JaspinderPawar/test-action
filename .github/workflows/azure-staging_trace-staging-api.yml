@@ -5,7 +5,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Check rejected commits
       - uses: fjogeleit/http-request-action@v1
         id: revieweeRequest
         with:
@@ -14,7 +13,7 @@ jobs:
       - run: "echo latest release: ${{ steps.revieweeRequest.outputs.response }}"
 
       - name: Reject build if rejected commits
-        if: ${{ steps.revieweeRequest.outputs.response }}=='true'
+        if: ${{ steps.revieweeRequest.outputs.response.success }}=='false'
         uses: actions/github-script@v3
         with:
           script: |
