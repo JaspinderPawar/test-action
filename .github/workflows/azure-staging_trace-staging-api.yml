@@ -10,4 +10,4 @@ jobs:
         with:
           url: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
           method: "GET"
-      - run: steps.revieweeRequest.outputs.response.success == true && exit 1
+      - run: steps.revieweeRequest.outputs.response.success == false && exit 1
