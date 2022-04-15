@@ -5,20 +5,18 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: JamesIves/fetch-api-data-action@v2.1.0
+      - uses: fjogeleit/http-request-action@v1
         id: revieweeRequest
         with:
-          endpoint: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
-          configuration: '{ "method": "GET"}'
-      - run: "echo latest release: $fetch-api-data"
+          url: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
+          method: "GET"
+      - run: "echo latest release: ${{steps.revieweeRequest.outputs.response }}"
 
-      - name: Read package.json
-        id: package
-        uses: juliangruber/read-file-action@v1
+      - uses: custom-action/action1@v1
+        id: action1
         with:
-          path: ./fetch-api-data-action/data.json
-      - name: Echo package.json
-        run: echo "${{ steps.package.outputs.content.success }}"
+          input: ${{ parseJSON(steps.revieweeRequest.outputs.response).*.success }}
+      - run: "echo : ${{steps.action1.outputs }}"
 
       - name: Reject build if rejected commits
         if: ${{ steps.revieweeRequest.outputs.response.success == 'true' }}
