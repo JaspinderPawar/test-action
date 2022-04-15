@@ -13,7 +13,7 @@ jobs:
       - run: "echo latest release: ${{fromJson(steps.revieweeRequest.outputs.response).success }}"
 
       - name: Reject build if rejected commits
-        if: ${{ fromJson(steps.revieweeRequest.outputs.response).success == true }}
+        if: ${{ fromJson(steps.revieweeRequest.outputs.response).success == false }}
         uses: actions/github-script@v3
         with:
           script: |
