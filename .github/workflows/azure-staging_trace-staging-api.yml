@@ -11,4 +11,4 @@ jobs:
           url: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
           method: "GET"
         if: steps.revieweeRequest.outputs.response.status == 200
-        run: "echo latest release"
+      - run: "echo latest release: ${{ steps.revieweeRequest.outputs.response }}"
