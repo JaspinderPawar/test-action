@@ -1,0 +1,16 @@
+name: CI
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check rejected commits
+        id: revieweeRequest
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
+          method: "GET"
+      - name: Reject build if rejected commits
+        if: ${{ steps.revieweeRequest.outputs.response.success == 'false' }}
+        run: exit 1
