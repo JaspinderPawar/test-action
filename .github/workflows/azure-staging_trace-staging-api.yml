@@ -7,10 +7,9 @@ jobs:
     steps:
       - name: Check rejected commits
         id: revieweeRequest
-        uses: fjogeleit/http-request-action@v1
+        uses: JamesIves/fetch-api-data-action@releases/v1
         with:
-          url: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
-          method: "GET"
+          ENDPOINT: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
       - name: Reject build if rejected commits
         if: ${{ steps.revieweeRequest.outputs.response.success == 'false' }}
         run: exit 1
