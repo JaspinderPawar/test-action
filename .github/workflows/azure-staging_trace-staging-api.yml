@@ -12,6 +12,14 @@ jobs:
           configuration: '{ "method": "GET"}'
       - run: "echo latest release: $fetch-api-data"
 
+      - name: Read package.json
+        id: package
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./fetch-api-data-action/data.json
+      - name: Echo package.json
+        run: echo "${{ steps.package.outputs.content }}"
+
       - name: Reject build if rejected commits
         if: ${{ steps.revieweeRequest.outputs.response.success == 'true' }}
         uses: actions/github-script@v3
