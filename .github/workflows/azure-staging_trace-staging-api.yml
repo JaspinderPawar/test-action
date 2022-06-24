@@ -11,7 +11,7 @@ jobs:
         run: docker-compose up -d
 
       - name: CI checks
-       run: docker build -t test-api .
+        run: docker build -t test-api .
 
       - name: Run API Tests
         id: run-newman
