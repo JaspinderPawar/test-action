@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  isla-test-api:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      volumes:
+        - .:/usr/src/app
+      ports:
+        - 5002:5001
+      environment:
+        DATABASE_URL: postgres://postgres:ucreate@183.28.1.2:27018/isla-test-api
+        DEBUG: 'true'
+      networks:
+        isla-test-api-network:
+          ipv4_address: 183.28.1.1
+ 
+volumes:
+  mongodb_dev: {}
+  mongodb_test: {}
+  redis: {}
+networks:
+  isla-test-api-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 183.28.0.0/16
