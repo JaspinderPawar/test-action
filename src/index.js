@@ -7,5 +7,5 @@ app.listen(5001, () => {
 });
 
 app.get("/", (req, res, next) => {
-  res.json(["Donnie", "Joey", "Jordan", "Jonathan", "Danny", "David"]);
+  res.json('hello');
 });

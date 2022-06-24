@@ -5,16 +5,27 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: fjogeleit/http-request-action@v1
-        id: revieweeRequest
+      - name: Run API Tests
+        id: run-newman
+        uses: anthonyvscode/newman-action@v1
         with:
-          url: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
-          method: "GET"
-      - run: "echo latest release: ${{fromJson(steps.revieweeRequest.outputs.response).success }}"
+          apiKey: ${{ secrets.postmanApiKey }}
+          collection: 19899133-efb51a29-78b4-4df8-9d32-f9fc0fd08fea
+          reporters: cli
 
-      - name: Reject build if rejected commits
-        if: ${{ fromJson(steps.revieweeRequest.outputs.response).success == false }}
-        uses: actions/github-script@v3
-        with:
-          script: |
-            core.setFailed('Please fix rejected commits')
+      - name: Output summary to console
+        run: echo ${{ steps.run-newman.outputs.summary }}
+
+      # - uses: fjogeleit/http-request-action@v1
+      #   id: revieweeRequest
+      #   with:
+      #     url: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
+      #     method: "GET"
+      # - run: "echo latest release: ${{fromJson(steps.revieweeRequest.outputs.response).success }}"
+
+      # - name: Reject build if rejected commits
+      #   if: ${{ fromJson(steps.revieweeRequest.outputs.response).success == false }}
+      #   uses: actions/github-script@v3
+      #   with:
+      #     script: |
+      #       core.setFailed('Please fix rejected commits')
