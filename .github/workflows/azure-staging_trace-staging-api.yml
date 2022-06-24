@@ -10,7 +10,7 @@ jobs:
       - name: Start containers
         run: docker-compose up -d
 
-      - name: CI checks
+       - setup_remote_docker
       - run: docker build -t test-api .
 
       - name: Run API Tests
