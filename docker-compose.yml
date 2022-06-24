@@ -9,11 +9,12 @@ services:
       ports:
         - 5002:5001
       environment:
-        DATABASE_URL: postgres://postgres:ucreate@183.28.1.2:27018/isla-test-api
         DEBUG: 'true'
       networks:
         isla-test-api-network:
-          ipv4_address: 183.28.1.1
+          ipv4_address: 220.246.1.1
+      extra_hosts:
+      - host.docker.internal:host-gateway
  
 volumes:
   mongodb_dev: {}
@@ -24,4 +25,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 183.28.0.0/16
+        - subnet: 220.246.0.0/16
