@@ -7,7 +7,7 @@ services:
       volumes:
         - .:/usr/src/app
       ports:
-        - 5002:8080
+        - 5002:80
       environment:
         DEBUG: 'true'
       networks:
