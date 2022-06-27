@@ -1,15 +1,12 @@
 FROM node:14
 
-# Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Install app dependencies
-COPY package.json /usr/src/app/
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+
 RUN npm install
 
-# Bundle app source
-COPY . /usr/src/app
+COPY . .
 
-EXPOSE 5002
 CMD [ "node", "src/index.js" ]
