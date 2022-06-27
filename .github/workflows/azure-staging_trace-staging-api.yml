@@ -11,7 +11,9 @@ jobs:
         run: docker-compose up -d
 
       - name: 🔎 run app
-        run: npm run start
+        run: |
+         npm install
+         npm run start
 
       - name: 🔎 Check IP
         run: curl 172.20.128.1
