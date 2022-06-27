@@ -1,26 +1,42 @@
-version: '3.7'
+version: "3"
 services:
-  isla-test-api:
-      build:
-        context: .
-        dockerfile: Dockerfile
-      volumes:
-        - .:/usr/src/app
-      ports:
-        - 5002:5001
-      environment:
-        DEBUG: 'true'
-      networks:
-        isla-test-api-network:
-          ipv4_address: 172.20.128.1
- 
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PORT: 5001
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 5001:5001
+    # depends_on:
+    #   - pg
+    environment:
+      DATABASE_URL: postgres://postgres:ucreate@142.28.1.2:8432/reviewee-api
+      DEBUG: 'true'
+    networks:
+      testing_net:
+        ipv4_address: 142.28.1.1
+
+  pg:
+    image: postgres:latest
+    ports:
+    - 8332:5432
+    volumes:
+      - db_data:/usr/lib/postgres
+    environment:
+      POSTGRES_PASSWORD: ucreate
+      POSTGRES_DB: reviewee-api
+    networks:
+      testing_net:
+        ipv4_address: 142.28.1.2
+
 volumes:
-  mongodb_dev: {}
-  mongodb_test: {}
-  redis: {}
+  db_data: {}
 networks:
-  isla-test-api-network:
+  testing_net:
     ipam:
       driver: default
       config:
-        - subnet: 172.20.0.0/16
+        - subnet: 142.28.0.0/16

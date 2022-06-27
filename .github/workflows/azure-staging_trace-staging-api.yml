@@ -1,44 +1,15 @@
-name: CI
+name: docker-compose-actions-workflow
 on: push
-
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-     
-
-      - name: 🔎 run app
-        run: |
-         npm install
-         npm run start
-      - name: Start containers
+      - name: Build the stack
         run: docker-compose up -d
-        
-      - name: 🔎 Check IP
-        run: curl 172.20.128.1
-
-      - name: Run API Tests
-        id: run-newman
-        uses: anthonyvscode/newman-action@v1
+      - uses: satak/webrequest-action@master
         with:
-          apiKey: ${{ secrets.postmanApiKey }}
-          collection: 19899133-efb51a29-78b4-4df8-9d32-f9fc0fd08fea
-          reporters: cli
-
-      - name: Output summary to console
-        run: echo ${{ steps.run-newman.outputs.summary }}
-
-      # - uses: fjogeleit/http-request-action@v1
-      #   id: revieweeRequest
-      #   with:
-      #     url: "https://api.reviewee.it/repository/Islaevent-API/haveRejectedCommits"
-      #     method: "GET"
-      # - run: "echo latest release: ${{fromJson(steps.revieweeRequest.outputs.response).success }}"
-
-      # - name: Reject build if rejected commits
-      #   if: ${{ fromJson(steps.revieweeRequest.outputs.response).success == false }}
-      #   uses: actions/github-script@v3
-      #   with:
-      #     script: |
-      #       core.setFailed('Please fix rejected commits')
+          url: http://142.28.1.1:5001/
+          method: GET
+      - name: 🔎 Check IP
+        run: curl  http://142.28.1.1:5001/

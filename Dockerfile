@@ -1,18 +1,15 @@
-FROM node:14
+FROM node:latest
 
-# Create app directory
-RUN mkdir -p /usr/src/app
+ENV PORT=${PORT}
+
 WORKDIR /usr/src/app
 
-# Install app dependencies
-COPY package.json /usr/src/app/
+COPY package*.json ./
 
-COPY package-lock.json /usr/src/app/
+RUN npm install
 
-#RUN npm install
+COPY . .
 
-# Bundle app source
-COPY . /usr/src/app
+EXPOSE 5001
 
-#EXPOSE 5001
-#CMD [ "node", "src/index.js" ]
+CMD [ "node", "src/index.js" ]
