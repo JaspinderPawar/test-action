@@ -14,5 +14,5 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
-EXPOSE 5002
-CMD [ "node", "src/index.js" ]
+#EXPOSE 5001
+#CMD [ "node", "src/index.js" ]
