@@ -10,7 +10,7 @@ jobs:
       - name: Start containers
         run: docker-compose up -d
 
-       - name: 🔎 run app
+      - name: 🔎 run app
         run: npm run start
 
       - name: 🔎 Check IP
