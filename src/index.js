@@ -2,10 +2,7 @@
 var express = require("express");
 var app = express();
 
-const PORT = process.env.PORT || 8080;
-console.log(PORT)
-
-app.listen(PORT, () => {
+app.listen(5001, () => {
   console.log("Server running on port 5001");
 });
 

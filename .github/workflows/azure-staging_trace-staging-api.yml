@@ -10,7 +10,7 @@ jobs:
       - name: Start containers
         run: docker-compose up -d
       - name: 🔎 Check IP
-        run: curl http://220.223.1.2:5002
+        run: curl http://220.246.1.1:5002
 
       - name: Run API Tests
         id: run-newman

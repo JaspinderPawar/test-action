@@ -7,12 +7,12 @@ services:
       volumes:
         - .:/usr/src/app
       ports:
-        - 5002:80
+        - 5002:5001
       environment:
         DEBUG: 'true'
       networks:
         isla-test-api-network:
-          ipv4_address: 220.223.1.2
+          ipv4_address: 220.246.1.1
       extra_hosts:
       - host.docker.internal:host-gateway
  
@@ -25,4 +25,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 220.223.0.0/16
+        - subnet: 220.246.0.0/16
