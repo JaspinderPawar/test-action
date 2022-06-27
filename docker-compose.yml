@@ -12,9 +12,7 @@ services:
         DEBUG: 'true'
       networks:
         isla-test-api-network:
-          ipv4_address: 220.246.1.1
-      extra_hosts:
-      - host.docker.internal:host-gateway
+          ipv4_address: 172.20.128.1
  
 volumes:
   mongodb_dev: {}
@@ -25,4 +23,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 220.246.0.0/16
+        - subnet: 172.20.0.0/16
