@@ -10,7 +10,7 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm install --prefix ./
+RUN npm install 
 
 EXPOSE 5001
 
