@@ -29,7 +29,7 @@ services:
     volumes:
       - mongodb_test:/data/db
     networks:
-      isla-api-network:
+      testing_net:
         ipv4_address: 142.28.1.2
 
 volumes:
