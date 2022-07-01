@@ -10,8 +10,8 @@ services:
       - .:/usr/src/app
     ports:
       - 5001:5001
-    depends_on:
-      - mongodb_test
+    # depends_on:
+    #   - mongodb_test
     environment:
       MONGODB_URL:  mongodb://142.28.1.2:27017/test
       PASSWORD:  test
@@ -20,18 +20,18 @@ services:
       testing_net:
         ipv4_address: 142.28.1.1
 
-  mongodb_test:
-    image: mongo:latest
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password
-    ports:
-      - 27018:27017
-    volumes:
-      - mongodb_test:/data/db
-    networks:
-      testing_net:
-        ipv4_address: 142.28.1.2
+  # mongodb_test:
+  #   image: mongo:latest
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: admin
+  #     MONGO_INITDB_ROOT_PASSWORD: password
+  #   ports:
+  #     - 27018:27017
+  #   volumes:
+  #     - mongodb_test:/data/db
+  #   networks:
+  #     testing_net:
+  #       ipv4_address: 142.28.1.2
 
 volumes:
   db_data: {}

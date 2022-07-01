@@ -10,10 +10,8 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm install -g nodemon && npm install 
-
-RUN npm ls
+RUN npm install 
 
 EXPOSE 5001
 
-CMD [ "nodemon", "src/index.js" ]
+CMD [ "node", "src/index.js" ]
