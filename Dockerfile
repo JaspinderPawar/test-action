@@ -4,7 +4,7 @@ ENV PORT=${PORT}
 
 WORKDIR /usr/src/app
 
-COPY ["package.json", "package-lock.json*", "./"]
+COPY package*.json ./
 
 RUN npm install
 
