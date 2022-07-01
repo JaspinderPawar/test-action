@@ -7,9 +7,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the stack
         run: docker-compose up -d
-      - uses: satak/webrequest-action@master
-        with:
-          url: http://142.28.1.1:5001/
-          method: GET
       - name: 🔎 Check IP
         run: curl  http://142.28.1.1:5001/
