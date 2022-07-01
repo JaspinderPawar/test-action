@@ -3,9 +3,6 @@ var express = require("express");
 const mongoose = require("mongoose");
 var app = express();
 
-app.listen(5001, () => {
-  console.log("Server running on port 5001");
-});
 
 const url = process.env.MONGODB_URL;
 const options = {
@@ -15,9 +12,17 @@ const options = {
   useUnifiedTopology: true,
 };
 
-mongoose.connect(url, options).then(() => {
+app.listen(5001, () => {
+  console.log("Server running on port 5001");
+
+   console.log("Smongo url ",url);
+  mongoose.connect(url, options).then(() => {
   console.log("Connected to MongoDB");
 });
+});
+
+
+
 
 app.get("/", (req, res, next) => {
   res.json('hello');
