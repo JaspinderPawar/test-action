@@ -13,7 +13,8 @@ services:
     depends_on:
       - mongodb_test
     environment:
-      DATABASE_URL:  mongodb://142.28.1.2:27017/test
+      MONGODB_URL:  mongodb://142.28.1.2:27017/test
+      PASSWORD:  test
       DEBUG: 'true'
     networks:
       testing_net:
