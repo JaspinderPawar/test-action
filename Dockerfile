@@ -4,11 +4,11 @@ ENV PORT=${PORT}
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+# COPY package*.json ./
 
-RUN npm install
+RUN npm install --prefix ./
 
-COPY . /
+COPY . .
 
 EXPOSE 5001
 
