@@ -1,6 +1,6 @@
 
 var express = require("express");
-var mongoose = require("mongoose");
+const {MongoClient} = require('mongodb');
 var app = express();
 
 // const url = process.env.MONGODB_URL;
