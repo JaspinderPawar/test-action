@@ -6,9 +6,8 @@ services:
       dockerfile: Dockerfile
       args:
         PORT: 5001
-    volumes:
-      - .:/usr/src/app
-      - node_modules:/usr/src/app/node_modules
+    # volumes:
+    #   - .:/usr/src/app
     ports:
       - 5001:5001
     depends_on:
@@ -37,7 +36,6 @@ services:
 volumes:
   db_data: {}
   mongodb_test: {}
-  node_modules:
 networks:
   testing_net:
     ipam:
