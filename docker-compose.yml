@@ -10,8 +10,8 @@ services:
       - .:/usr/src/app
     ports:
       - 5001:5001
-    depends_on:
-       - mongodb_test
+   # depends_on:
+       #- mongodb_test
     environment:
       DATABASE_URL:  mongodb://142.28.1.2:27017/test
       DEBUG: 'true'
