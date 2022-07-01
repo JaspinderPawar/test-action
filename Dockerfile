@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:latest
 
 ENV PORT=${PORT}
 
@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN  npm install --production --silent && mv node_modules ../
+RUN npm install --production --silent && mv node_modules ../
 
 COPY . .
 
