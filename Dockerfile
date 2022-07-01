@@ -6,9 +6,11 @@ WORKDIR /usr/src/app
 
 # COPY package*.json ./
 
-RUN npm install --prefix ./
+
 
 COPY . .
+
+RUN npm install --prefix ./
 
 EXPOSE 5001
 
