@@ -15,7 +15,7 @@ const options = {
   useUnifiedTopology: true,
 };
 
-mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
+mongoose.connect(url, options).then(() => {
   console.log("Connected to MongoDB");
 });
 
