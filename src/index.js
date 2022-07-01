@@ -1,16 +1,16 @@
 
 var express = require("express");
-//var mongoose = require("mongoose");
+var mongoose = require("mongoose");
 var app = express();
 
-const url = process.env.MONGODB_URL;
-const options = {
-  useNewUrlParser: true,
-  autoIndex: true,
-  useUnifiedTopology: true,
-};
+// const url = process.env.MONGODB_URL;
+// const options = {
+//   useNewUrlParser: true,
+//   autoIndex: true,
+//   useUnifiedTopology: true,
+// };
 
-console.log(url)
+// console.log(url)
 
 app.listen(5001, () => {
   console.log("Server running on the port 5001");
