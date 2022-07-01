@@ -1,5 +1,10 @@
 var express = require("express");
-const {MongoClient} = require('mongodb');
+try {
+  const {MongoClient} = require('mongodb');
+} catch (error) {
+  console.log(error)
+}
+
 var app = express();
 
 app.listen(5001, () => {
