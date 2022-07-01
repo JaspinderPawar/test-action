@@ -10,10 +10,10 @@ services:
       - .:/usr/src/app
     ports:
       - 5001:5001
-   # depends_on:
-       #- mongodb_test
+    depends_on:
+      - mongodb_test
     environment:
-      DATABASE_URL:  mongodb://142.28.1.2:27017/test
+      DATABASE_URL:  mongodb://localhost:27017/test
       DEBUG: 'true'
     networks:
       testing_net:
@@ -28,9 +28,9 @@ services:
       - 27018:27017
     volumes:
       - mongodb_test:/data/db
-    networks:
-      testing_net:
-        ipv4_address: 142.28.1.2
+    # networks:
+    #   testing_net:
+    #     ipv4_address: 142.28.1.2
 
 volumes:
   db_data: {}
