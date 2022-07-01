@@ -10,26 +10,26 @@ services:
       - .:/usr/src/app
     ports:
       - 5001:5001
-    # depends_on:
-    #   - pg
+    depends_on:
+       - mongodb_test
     environment:
-      DATABASE_URL: postgres://postgres:ucreate@142.28.1.2:8432/reviewee-api
+      DATABASE_URL:  mongodb://142.28.1.2:27017/test
       DEBUG: 'true'
     networks:
       testing_net:
         ipv4_address: 142.28.1.1
 
-  pg:
-    image: postgres:latest
-    ports:
-    - 8332:5432
-    volumes:
-      - db_data:/usr/lib/postgres
+  mongodb_test:
+    image: mongo:latest
     environment:
-      POSTGRES_PASSWORD: ucreate
-      POSTGRES_DB: reviewee-api
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - 27018:27017
+    volumes:
+      - mongodb_test:/data/db
     networks:
-      testing_net:
+      isla-api-network:
         ipv4_address: 142.28.1.2
 
 volumes:
