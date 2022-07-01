@@ -6,8 +6,8 @@ services:
       dockerfile: Dockerfile
       args:
         PORT: 5001
-    # volumes:
-    #   - .:/usr/src/app
+    volumes:
+      - .:/usr/src/app
     ports:
       - 5001:5001
     depends_on:
