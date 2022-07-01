@@ -13,7 +13,7 @@ services:
     depends_on:
       - mongodb_test
     environment:
-      MONGODB_URL:  mongodb://localhost:27017/test
+      MONGODB_URL:  mongodb://localhost:27018/test
       PASSWORD:  test
       DEBUG: 'true'
     networks:
