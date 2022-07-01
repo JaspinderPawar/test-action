@@ -37,6 +37,7 @@ services:
 volumes:
   db_data: {}
   mongodb_test: {}
+  node_modules:
 networks:
   testing_net:
     ipam:
