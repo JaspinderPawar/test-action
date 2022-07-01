@@ -1,6 +1,5 @@
-
 var express = require("express");
-//const {MongoClient} = require('mongodb');
+const {MongoClient} = require('mongodb');
 var app = express();
 
 // const url = process.env.MONGODB_URL;
