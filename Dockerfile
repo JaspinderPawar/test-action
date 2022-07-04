@@ -10,9 +10,8 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm install 
-
-COPY . /usr/src/app
+RUN npm install \
+    npm install mongodb
 
 EXPOSE 5001
 
