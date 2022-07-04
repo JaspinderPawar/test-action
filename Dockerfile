@@ -4,13 +4,17 @@ ENV PORT=${PORT}
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+# COPY package*.json ./
 
 
 
 COPY . .
 
-COPY . /app
+RUN npm install \
+    npm install express \
+    npm install json2csv
+
+
 EXPOSE 5001
 
 CMD [ "node", "src/index.js" ]
