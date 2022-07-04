@@ -10,7 +10,7 @@ COPY package*.json ./
 
 COPY . /
 
-RUN npm install -g nodemon && npm install && npm list -g --depth=0
+RUN npm install -g nodemon && npm install && npm ls
 #  \
 #     npm install express \
 #     npm install redis \
