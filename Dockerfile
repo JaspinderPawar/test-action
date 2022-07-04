@@ -4,17 +4,19 @@ ENV PORT=${PORT}
 
 WORKDIR /usr/src/app
 
-# COPY package*.json ./
+COPY package*.json ./
 
 
 
-COPY . .
+COPY . /
 
-RUN npm install \
-    npm install express \
-    npm install redis \
-    npm install json2csv
+RUN npm install
+#  \
+#     npm install express \
+#     npm install redis \
+#     npm install json2csv
 
+COPY . /
 
 EXPOSE 5001
 
