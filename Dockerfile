@@ -4,15 +4,15 @@ ENV PORT=${PORT}
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+# COPY package*.json ./
 
-RUN cat /package.json
+
 
 COPY . .
 
 RUN npm install \
     npm install express \
-    npm install mongoose \
+    npm install redis \
     npm install json2csv
 
 

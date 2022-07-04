@@ -1,5 +1,5 @@
 var express = require("express");
-const mongoose = require('mongoose');
+const { createClient } = require('redis');
 require('json2csv');
 
 
