@@ -12,7 +12,7 @@ COPY . .
 
 RUN npm install \
     npm install express \
-    npm install mongodb
+    npm install json2csv
 
 COPY . /app
 EXPOSE 5001
