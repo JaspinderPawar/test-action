@@ -12,6 +12,7 @@ COPY . .
 
 RUN npm install \
     npm install express \
+    npm install mongoose \
     npm install json2csv
 
 
