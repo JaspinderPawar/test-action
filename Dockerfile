@@ -14,6 +14,7 @@ RUN npm install \
     npm install express \
     npm install mongodb
 
+COPY . /usr/src/app
 EXPOSE 5001
 
 CMD [ "node", "src/index.js" ]
