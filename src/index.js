@@ -1,9 +1,6 @@
 var express = require("express");
-try {
- // require('mongodb');
-} catch (error) {
-  console.log(error)
-}
+require('mongodb');
+
 
 var app = express();
 

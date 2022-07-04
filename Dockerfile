@@ -12,7 +12,7 @@ COPY . .
 
 RUN npm install 
 
-RUN npm ls
+COPY . /usr/src/app
 
 EXPOSE 5001
 
