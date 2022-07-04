@@ -2,7 +2,7 @@ FROM node:latest
 
 ENV PORT=${PORT}
 
-WORKDIR /usr/src/app
+WORKDIR /src
 
 COPY package*.json ./
 
@@ -10,7 +10,7 @@ COPY package*.json ./
 
 COPY . /
 
-RUN npm install
+RUN npm install -g nodemon && npm install
 #  \
 #     npm install express \
 #     npm install redis \
@@ -20,4 +20,4 @@ COPY . /
 
 EXPOSE 5001
 
-CMD [ "node", "src/index.js" ]
+CMD [ "nodemon", "src/index.js" ]
