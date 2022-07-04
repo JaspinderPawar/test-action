@@ -1,5 +1,5 @@
 var express = require("express");
-//require('redis');
+require('redis');
 require('json2csv');
 
 
