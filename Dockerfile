@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 # COPY package*.json ./
 
-
+RUN cat /package.json
 
 COPY . .
 
