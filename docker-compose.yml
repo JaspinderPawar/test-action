@@ -1,26 +1,19 @@
-version: "3"
+version: '3'
 services:
-  web:
+  node-app:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        PORT: 3000
-    ports:
-      - 5001:5001
-    depends_on:
-      - mongodb_test
-    environment:
-      MONGODB_URL:  mongodb://142.28.1.2:27017/test
-      PASSWORD:  test
-      DEBUG: 'true'
     networks:
-      testing_net:
-        ipv4_address: 142.28.1.1
+      my_network:
+        ipv4_address: 142.29.0.2
+    ports:
+      - "3000:3000"
 
 networks:
-  testing_net:
+  my_network:
+    driver: bridge
     ipam:
       driver: default
       config:
-        - subnet: 142.28.0.0/16
+        - subnet: 142.29.0.0/24

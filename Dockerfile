@@ -1,22 +1,20 @@
-FROM node:latest
+# Use an official Node.js runtime as a parent image
+FROM node:14
 
-ENV PORT=${PORT}
-
+# Set the working directory in the container
 WORKDIR /usr/src/app
 
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
+# Install app dependencies
+RUN npm install
 
-
+# Copy the app source code to the working directory
 COPY . .
 
-RUN npm install -g nodemon && npm install && npm ls
-#  \
-#     npm install express \
-#     npm install redis \
-#     npm install json2csv
+# Expose the port your app will run on
+EXPOSE 3000
 
-
-EXPOSE 5001
-
-CMD [ "node", "src/index.js" ]
+# Command to run your application
+CMD ["npm", "start"]

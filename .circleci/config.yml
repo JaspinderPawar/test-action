@@ -1,0 +1,34 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: docker:stable
+
+    steps:
+      - checkout
+
+      - run:
+          name: Build Docker Image
+          command: |
+            docker build -t test-image .
+
+      - run:
+          name: Run Docker Compose
+          command: |
+            docker-compose up -d
+
+      - run:
+          name: Wait for App to Start
+          command: sleep 30
+
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - your-app-directory
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
