@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: Setup Docker
-          command: sudo chown root:docker /var/run/docker.sock && sudo chmod 660 /var/run/docker.sock
+           command: echo "DOCKER_OPTS='-H unix:///var/run/docker.sock'" | sudo tee -a /etc/default/docker > /dev/null
       - run:
           name: Build Docker Image
           command: |
