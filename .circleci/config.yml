@@ -7,7 +7,9 @@ jobs:
 
     steps:
       - checkout
-
+      - run:
+          name: Setup Docker
+          command: echo "DOCKER_OPTS='-H unix:///var/run/docker.sock'"
       - run:
           name: Build Docker Image
           command: |
