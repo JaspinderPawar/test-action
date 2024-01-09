@@ -8,7 +8,13 @@ jobs:
     working_directory: ~/code
 
     steps:
-      - checkout      
+      - checkout  
+        # Set environment variables from CircleCI
+      - run:
+          name: Set Environment Variables
+          command: |
+            echo "NODE_ENV=$NODE_ENV" >> $BASH_ENV
+            echo "PORT=$PORT" >> $BASH_ENV    
       - run:
           name: Build Docker Image
           command: |
