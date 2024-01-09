@@ -31,10 +31,6 @@ jobs:
           name: Run Tests with Newman
           command: newman run ci-collection.json
 
-      - persist_to_workspace:
-          root: /tmp
-          paths:
-            - your-app-directory
 
 workflows:
   version: 2

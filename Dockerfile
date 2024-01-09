@@ -3,7 +3,7 @@ FROM node:14
 
 # Set environment variables
 ENV NODE_ENV=$NODE_ENV
-ENV PORT=$PORT
+ENV PORT="5000"
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
