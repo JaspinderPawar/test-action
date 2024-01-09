@@ -1,4 +1,5 @@
 var express = require("express");
+require(dotenv).config();
 
 var app = express();
 
@@ -7,5 +8,5 @@ app.listen(3000, () => {
 });
 
 app.get("/", (req, res, next) => {
-  res.status(200).json({ data: 'hello' });
+  res.status(200).json({ data: process.env.NODE_ENV, port:  process.env.PORT });
 });

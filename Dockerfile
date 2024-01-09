@@ -1,6 +1,10 @@
 # Use an official Node.js runtime as a parent image
 FROM node:14
 
+# Set environment variables
+ENV NODE_ENV=$NODE_ENV
+ENV PORT=$PORT
+
 # Set the working directory in the container
 WORKDIR /usr/src/app
 

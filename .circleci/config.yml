@@ -8,7 +8,7 @@ jobs:
     working_directory: ~/code
 
     steps:
-      - checkout
+      - checkout      
       - run:
           name: Build Docker Image
           command: |
