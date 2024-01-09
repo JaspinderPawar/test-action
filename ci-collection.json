@@ -18,6 +18,8 @@
 							"\r",
 							"pm.test('Response code should be 200', function () {\r",
 							"    pm.response.to.have.status(200);\r",
+							"    pm.expect(response.data).to.be.eql(\"staging\")\r",
+							"     console.log(response.data)\r",
 							"    console.log(response)\r",
 							"})\r",
 							""
