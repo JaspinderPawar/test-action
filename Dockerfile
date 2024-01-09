@@ -19,8 +19,8 @@ RUN npm install
 # Copy the app source code to the working directory
 COPY . .
 
-RUN echo "NODE_ENV=$NODE_ENV" >> .env
-RUN echo "PORT=$NODE_ENV" >> .env
+RUN echo "NODE_ENV=production" >> .env
+RUN echo "PORT=3000" >> .env
 
 # Expose the port your app will run on
 EXPOSE 3000
