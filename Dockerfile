@@ -2,8 +2,10 @@
 FROM node:14
 
 # Set environment variables
-ENV NODE_ENV=$NODE_ENV
-ENV PORT="5000"
+#ENV NODE_ENV="NODE_ENV"
+#ENV PORT="5000"
+
+
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -16,6 +18,9 @@ RUN npm install
 
 # Copy the app source code to the working directory
 COPY . .
+
+RUN echo "NODE_ENV=$NODE_ENV" >> .env
+RUN echo "PORT=$NODE_ENV" >> .env
 
 # Expose the port your app will run on
 EXPOSE 3000
