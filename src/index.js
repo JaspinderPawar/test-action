@@ -10,5 +10,5 @@ app.listen(3000, () => {
 });
 
 app.get("/", (req, res, next) => {
-  res.json('hello');
+  res.status(200).json({ data: 'hello' });
 });

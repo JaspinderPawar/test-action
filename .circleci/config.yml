@@ -1,10 +1,11 @@
 version: 2.1
 
 jobs:
-  build:
-    docker:
-      - image: cimg/go:1.17
-    resource_class: xlarge
+   ci:
+    machine:
+      image: ubuntu-2204:2023.10.1
+    resource_class: medium
+    working_directory: ~/code
 
     steps:
       - checkout
@@ -21,6 +22,12 @@ jobs:
       - run:
           name: Wait for App to Start
           command: sleep 30
+      - run:
+          name: Install Newman
+          command: npm install -g newman
+      - run:
+          name: Run Tests with Newman
+          command: newman run ci-collection.json
 
       - persist_to_workspace:
           root: /tmp

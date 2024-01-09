@@ -1,19 +1,23 @@
 version: '3'
 services:
-  node-app:
+  tidal-api:
     build:
       context: .
       dockerfile: Dockerfile
-    networks:
-      my_network:
-        ipv4_address: 142.29.0.2
+    container_name: tidal-api
+    restart: always
     ports:
       - "3000:3000"
+    networks:
+      tidal_network:
+        ipv4_address: 10.10.1.5
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
 networks:
-  my_network:
+  tidal_network:
     driver: bridge
     ipam:
       driver: default
       config:
-        - subnet: 142.29.0.0/24
+        - subnet: 10.10.0.0/16
