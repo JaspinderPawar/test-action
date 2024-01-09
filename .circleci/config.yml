@@ -13,8 +13,8 @@ jobs:
       - run:
           name: Set Environment Variables
           command: |
-            echo "NODE_ENV=$NODE_ENV" >> $BASH_ENV
-            echo "PORT=$PORT" >> $BASH_ENV    
+            echo "NODE_ENV=${NODE_ENV}" >> .env
+            echo "PORT=${PORT}" >> .env   
       - run:
           name: Build Docker Image
           command: |
