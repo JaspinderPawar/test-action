@@ -39,6 +39,3 @@ workflows:
   ci-cd:
     jobs:
       - ci
-      - cd:
-          requires:
-            - ci
