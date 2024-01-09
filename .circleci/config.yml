@@ -18,10 +18,6 @@ jobs:
           name: Run Docker Compose
           command: |
             docker-compose up -d
-
-      - run:
-          name: Wait for App to Start
-          command: sleep 30
       - run:
           name: Install Newman
           command: npm install -g newman
