@@ -7,7 +7,7 @@ services:
     container_name: tidal-api
     restart: always
     ports:
-      - "3000:3000"
+      - "3000:80"
     networks:
       tidal_network:
         ipv4_address: 10.10.1.5
