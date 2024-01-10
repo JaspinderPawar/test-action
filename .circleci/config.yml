@@ -11,10 +11,13 @@ jobs:
       - checkout  
         # Set environment variables from CircleCI
       - run:
-          name: Set Environment Variables
-          command: |
-            echo "NODE_ENV=${NODE_ENV}" >> .env
-            echo "PORT=${PORT}" >> .env   
+          name: Set App Environment Variables
+          command: bash .circleci/set-env-vars.sh
+      # - run:
+      #     name: Set Environment Variables
+      #     command: |
+      #       echo "NODE_ENV=${NODE_ENV}" >> .env
+      #       echo "PORT=${PORT}" >> .env   
       - run:
           name: Build Docker Image
           command: |
