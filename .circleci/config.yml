@@ -18,10 +18,10 @@ jobs:
       #     command: |
       #       echo "NODE_ENV=${NODE_ENV}" >> .env
       #       echo "PORT=${PORT}" >> .env   
-      - run:
-          name: Build Docker Image
-          command: |
-            docker build -t test-image .
+      # - run:
+      #     name: Build Docker Image
+      #     command: |
+      #       docker build -t test-image .
 
       - run:
           name: Run Docker Compose
